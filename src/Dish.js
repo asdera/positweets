@@ -32,14 +32,14 @@ export const Dish = (props) => {
   };
 
   return (
-    <div
-      style={{
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      className="Dish"
-    >
-      <h2>@{props.name}</h2>
+    <div className="Dish">
+      <h2
+        style={{
+          fontSize: "1vh",
+        }}
+      >
+        @{props.name}
+      </h2>
       <p>{props.tweetText}</p>
       <h3>Count: {count}</h3>
       <button className="clap" onClick={addDish}>
