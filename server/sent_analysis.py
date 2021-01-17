@@ -1,4 +1,7 @@
 from google.cloud import language_v1
+import os
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="server/positweet-a222d7197f97.json"
 
 def get_score(text_content):
 
