@@ -1,4 +1,5 @@
 import './App.css';
+import {Dish} from "./Dish";
 
 function App() {
   return (
@@ -12,6 +13,51 @@ function App() {
         </table>
         <button className="what">what's posifeed?</button>
       </header>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
+       <Dish name="Tweet"/>
     </div>
   );
 }
