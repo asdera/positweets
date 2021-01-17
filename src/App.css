@@ -69,6 +69,20 @@
   background-color: white;
 }
 
+.refresh {
+  margin-right: 5px;
+  border-radius: 16px;
+  width: 20vh;
+  height: 3.5vh;
+  color: #95cae0;
+  border: #95cae0;
+  font-size: 2vh;
+  font-weight: bold;
+  margin: 1.5vh;
+  margin-bottom: 3vh;
+  background-color: white;
+}
+
 .App-header {
   background: linear-gradient(to bottom, #DDEFFF, #FFF1CC, #FFD9BA, #FFC3C0, #959FFF );
 	background-size: 100%;

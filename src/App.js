@@ -18,6 +18,7 @@ function App() {
           <button className="signup">sign up!</button>
         </table>
         <button className="what">what's posifeed?</button>
+        <button className="refresh">refresh feed</button>
       <div className="tweets">
         <Dish name="Tweet" tweetText="this is a tweet!" />
         <Dish name="Tweet" tweetText="this is a tweet!"/>
