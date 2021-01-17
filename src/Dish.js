@@ -40,7 +40,8 @@ export const Dish = (props) => {
       className="Dish"
     >
       <h2>{props.name}</h2>
-      <p>Count: {count}</p>
+      <p>{props.tweetText}</p>
+      <h3>Count: {count}</h3>
       <button className="clap" onClick={addDish}>
         {" "}
         Clap👏
