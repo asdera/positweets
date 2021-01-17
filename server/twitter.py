@@ -27,7 +27,6 @@ def create_headers(bearer_token):
 
 def connect_to_endpoint(url, headers):
     response = requests.request("GET", url, headers=headers, stream=True)
-    print(response.status_code)
     for response_line in response.iter_lines():
         if response_line:
             json_response = json.loads(response_line)
@@ -72,7 +71,6 @@ app = Flask(__name__, static_url_path='', static_folder='public')
 
 @app.route('/get_tweets')
 def get_tweets_endpoint():
-    print(tweet_stack)
     return jsonify(tweet_stack)
 
 
