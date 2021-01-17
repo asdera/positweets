@@ -16,7 +16,7 @@ def auth():
 
 
 def create_url():
-    return "https://api.twitter.com/2/tweets/sample/stream"
+    return "https://api.twitter.com/2/tweets/sample/stream?expansions=author_id"
 
 
 def create_headers(bearer_token):
@@ -29,7 +29,7 @@ def connect_to_endpoint(url, headers):
     for response_line in response.iter_lines():
         if response_line:
             json_response = json.loads(response_line)
-            add_if_posi(json_response["data"])
+            add_if_posi(json_response)
             #print(json.dumps(json_response, indent=4, sort_keys=True))
 
     if response.status_code != 200:
@@ -41,7 +41,8 @@ def connect_to_endpoint(url, headers):
 
 
 ## TODO: ANDREW YOUR CODE GOES HERE.
-def add_if_posi(tweet):
+def add_if_posi(data):
+    tweet = data["data"]
     score = sent_analysis.get_score(tweet["text"])
 
     #if score > 0.5:
@@ -50,6 +51,14 @@ def add_if_posi(tweet):
         # also fill array up to the TWEET_STACK_LEN, then start deleting
         if len(tweet_stack) > TWEET_STACK_LEN:
             tweet_stack.pop(0)
+
+        # get the username from the tweet
+        user_list = data["includes"]["users"]
+        users = {}
+        for user in user_list:
+            users[user["id"]] = user["username"]
+
+        tweet["username"] = users[tweet["author_id"]]
         tweet_stack.append(tweet)
 
 

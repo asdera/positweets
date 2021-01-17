@@ -39,7 +39,7 @@ export const Dish = (props) => {
       }}
       className="Dish"
     >
-      <h2>{props.name}</h2>
+      <h2>@{props.name}</h2>
       <p>{props.tweetText}</p>
       <h3>Count: {count}</h3>
       <button className="clap" onClick={addDish}>

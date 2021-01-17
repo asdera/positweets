@@ -25,7 +25,7 @@ export default class App extends Component {
         let newTweets = [];
         for (let i=0; i<data.length; ++i) {
             newTweets.push( <Dish
-                name={data[i].id}
+                name={data[i].username}
                 tweetText={data[i].text} /> );
         }
 
