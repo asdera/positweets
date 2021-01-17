@@ -62,11 +62,8 @@
   border: #B5BBFF;
   font-size: 2vh;
   font-weight: bold;
-  margin-top: 1.5vh;
-}
-
-.clear {
-  clear: both;
+  margin: 1.5vh;
+  margin-bottom: 10vh;
 }
 
 .App-header {
@@ -79,6 +76,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  width: 100;
 }
 
 @keyframes App-logo-spin {
