@@ -1,22 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          PosiFeed ~ no sad pepes allowed ~
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="title"> PosiTweet </h1>
+        <p className="subtitle">~ no sad vibes allowed ~</p>
+        <table>
+        <button className="login">login</button>
+        <button className="signup">sign up!</button>
+        </table>
+        <button className="what">what's posifeed?</button>
       </header>
     </div>
   );
