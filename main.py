@@ -5,8 +5,7 @@ from threading import Thread
 
 from flask import Flask, Response, jsonify
 
-import sent_analysis
-
+from server import sent_analysis
 
 TWEET_STACK_LEN = 50
 tweet_stack = []
@@ -67,7 +66,7 @@ def get_tweets():
 p = Thread(target=get_tweets)
 p.start()
 
-app = Flask(__name__, static_url_path='', static_folder='public')
+app = Flask(__name__, static_url_path='', static_folder='build')
 
 @app.route('/get_tweets')
 def get_tweets_endpoint():

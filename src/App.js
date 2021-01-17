@@ -1,11 +1,43 @@
+import React, {Component} from "react";
+
 import "./App.css";
 import { Dish } from "./Dish";
+
+import $ from "jquery";
 
 function login() {
   window.location.href = "login.html";
 }
 
-function App() {
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            tweets: [],
+        }
+
+        this.updateTweets = this.updateTweets.bind(this);
+        this.updateTweetsCallback = this.updateTweetsCallback.bind(this);
+    }
+
+    updateTweetsCallback(data) {
+        let newTweets = [];
+        for (let i=0; i<data.length; ++i) {
+            newTweets.push( <Dish
+                name={data[i].id}
+                tweetText={data[i].text} /> );
+        }
+
+        this.setState({tweets: newTweets});
+    }
+
+    updateTweets() {
+        $.getJSON("/get_tweets",
+                  this.updateTweetsCallback);
+    }
+
+    render() {
   return (
     <div className="App">
       <header className="App-header">
@@ -18,42 +50,12 @@ function App() {
           <button className="signup">sign up!</button>
         </table>
         <button className="what">what's posifeed?</button>
-        <button className="refresh">refresh feed</button>
+        <button className="refresh" onClick={this.updateTweets}>refresh feed</button>
       <div className="tweets">
-        <Dish name="Tweet" tweetText="this is a tweet!" />
-        <Dish name="Tweet" tweetText="this is a tweet!"/>
-        <Dish name="Tweet" tweetText="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo mi"/>
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
-        <Dish name="Tweet" />
+        {this.state.tweets}
       </div>
       </header>
     </div>
   );
+    }
 }
-
-export default App;
