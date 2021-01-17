@@ -1,12 +1,15 @@
 import requests
 import os
 import json
+from threading import Thread
+
+from flask import Flask, Response, jsonify
 
 import sent_analysis
 
-# To set your environment variables in your terminal run the following line:
-# export 'BEARER_TOKEN'='<your_bearer_token>'
 
+TWEET_STACK_LEN = 50
+tweet_stack = []
 
 def auth():
     #return os.environ.get("BEARER_TOKEN")
@@ -28,7 +31,7 @@ def connect_to_endpoint(url, headers):
     for response_line in response.iter_lines():
         if response_line:
             json_response = json.loads(response_line)
-            get_sent(json_response["data"])
+            add_if_posi(json_response["data"])
             #print(json.dumps(json_response, indent=4, sort_keys=True))
 
     if response.status_code != 200:
@@ -40,11 +43,19 @@ def connect_to_endpoint(url, headers):
 
 
 ## TODO: ANDREW YOUR CODE GOES HERE.
-def get_sent(tweet):
-    print(sent_analysis.get_score(tweet["text"]))
+def add_if_posi(tweet):
+    score = sent_analysis.get_score(tweet["text"])
+
+    #if score > 0.5:
+    if True:
+        # lazy implementation of stack since python's stdlib doesnt seem to have one
+        # also fill array up to the TWEET_STACK_LEN, then start deleting
+        if len(tweet_stack) > TWEET_STACK_LEN:
+            tweet_stack.pop(0)
+        tweet_stack.append(tweet)
 
 
-def main():
+def get_tweets():
     bearer_token = auth()
     url = create_url()
     headers = create_headers(bearer_token)
@@ -53,6 +64,21 @@ def main():
         connect_to_endpoint(url, headers)
         timeout += 1
 
+# start streaming tweets & filtering them in a seperate thread.
+p = Thread(target=get_tweets)
+p.start()
 
-if __name__ == "__main__":
-    main()
+app = Flask(__name__, static_url_path='', static_folder='public')
+
+@app.route('/get_tweets')
+def get_tweets_endpoint():
+    print(tweet_stack)
+    return jsonify(tweet_stack)
+
+
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0")
