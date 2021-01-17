@@ -39,6 +39,7 @@
   font-weight: bold;
   margin-bottom: 1vh;
   margin: 2vh;
+  background-color: white;
 }
 
 .signup {
@@ -51,6 +52,7 @@
   font-size: 2vh;
   font-weight: bold;
   margin: 2vh;
+  background-color: white;
 }
 
 .what {
@@ -64,6 +66,7 @@
   font-weight: bold;
   margin: 1.5vh;
   margin-bottom: 10vh;
+  background-color: white;
 }
 
 .App-header {
